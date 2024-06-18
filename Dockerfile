@@ -1,0 +1,54 @@
+FROM haproxy:lts-alpine
+
+EXPOSE 2375
+ENV DOCKER_SOCKET_PATH=/var/run/docker.sock \
+    LOG_LEVEL=notice \
+    PING_READ=0 \
+    PING_WRITE=0 \
+    VERSION_READ=0 \
+    VERSION_WRITE=0 \
+    INFO_READ=0 \
+    INFO_WRITE=0 \
+    EVENTS_READ=0 \
+    EVENTS_WRITE=0 \
+    AUTH_READ=0 \
+    AUTH_WRITE=0 \
+    SECRETS_READ=0 \
+    SECRETS_WRITE=0 \
+    BUILD_READ=0 \
+    BUILD_WRITE=0 \
+    COMMIT_READ=0 \
+    COMMIT_WRITE=0 \
+    CONFIGS_READ=0 \
+    CONFIGS_WRITE=0 \
+    CONTAINERS_READ=0 \
+    CONTAINERS_WRITE=0 \
+    DISTRIBUTION_READ=0 \
+    DISTRIBUTION_WRITE=0 \
+    EXEC_READ=0 \
+    EXEC_WRITE=0 \
+    GRPC_READ=0 \
+    GRPC_WRITE=0 \
+    IMAGES_READ=0 \
+    IMAGES_WRITE=0 \
+    NETWORKS_READ=0 \
+    NETWORKS_WRITE=0 \
+    NODES_READ=0 \
+    NODES_WRITE=0 \
+    PLUGINS_READ=0 \
+    PLUGINS_WRITE=0 \
+    SERVICES_READ=0 \
+    SERVICES_WRITE=0 \
+    SESSION_READ=0 \
+    SESSION_WRITE=0 \
+    SWARM_READ=0 \
+    SWARM_WRITE=0 \
+    SYSTEM_READ=0 \
+    SYSTEM_WRITE=0 \
+    TASKS_READ=0 \
+    TASKS_WRITE=0 \
+    VOLUMES_READ=0 \
+    VOLUMES_WRITE=0
+COPY docker-entrypoint.sh /usr/local/bin/
+COPY haproxy.cfg /usr/local/etc/haproxy/haproxy.cfg.template
+USER root
