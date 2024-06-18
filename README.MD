@@ -19,6 +19,7 @@ As in swiftwave, we need some extra permission control and a minimal authenticat
 | Variable Name      | Description              | Default Value        |
 | ------------------ | ------------------------ | -------------------- |
 | DOCKER_SOCKET_PATH | Path to docker socket    | /var/run/docker.sock |
+| AUTH_TOKEN         | Connect auth token       | N/A (mandatory)      |
 | LOG_LEVEL          | Log level                | notice               |
 | PING_READ          | Allow ping read          | 0                    |
 | PING_WRITE         | Allow ping write         | 0                    |
