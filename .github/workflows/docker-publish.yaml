@@ -38,6 +38,8 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+      - name: LowerCase repository name
+        run: echo IMAGE_REPOSITORY=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
       - name: Build and push Docker image
         id: build-and-push
         uses: docker/build-push-action@v3
