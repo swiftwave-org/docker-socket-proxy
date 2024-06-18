@@ -72,7 +72,7 @@ As in swiftwave, we need some extra permission control and a minimal authenticat
 
 1. Run this docker proxy.
    ```bash
-   docker run -it -p 2375:2375 -v /var/run/docker.sock:/var/run/docker.sock -e AUTH_TOKEN=<your_auth_token> -e PING_READ=1 -e VERSION_READ=1 swiftwave-org/docker-socket-proxy
+   docker run -it -p 2375:2375 -v /var/run/docker.sock:/var/run/docker.sock -e AUTH_TOKEN=<your_auth_token> -e PING_READ=1 -e VERSION_READ=1 ghcr.io/swiftwave-org/docker-socket-proxy
    ```
 2. Wherever you need to use this docker proxy, set `DOCKER_HOST` environment variable.
    ```bash
