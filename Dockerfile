@@ -1,4 +1,4 @@
-FROM haproxy:lts-alpine
+FROM haproxy:2.2-alpine
 
 EXPOSE 2375
 ENV DOCKER_SOCKET_PATH=/var/run/docker.sock \
