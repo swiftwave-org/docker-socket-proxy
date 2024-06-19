@@ -1,12 +1,12 @@
 # Docker Socket Proxy
 
-This is a simple proxy to convert unix socket of docker to tcp socket to share access to containers in same docker network. It has simple token based authentication mechanism & granular permission control to allow/deny read/write access to each endpoint.
+This is a simple proxy to convert unix socket of docker to tcp socket to share access to containers in same docker network. It has granular permission control to allow/deny read/write access to each endpoint.
 
 ## Credits
 
 Inspired from [https://github.com/Tecnativa/docker-socket-proxy](https://github.com/Tecnativa/docker-socket-proxy)
 
-As in swiftwave, we need some extra permission control and a minimal authentication mechanism to allow/deny access to each endpoint, we create this proxy to do the same.
+As in swiftwave, we need some extra permission control to allow/deny access to each endpoint, we create this proxy to do the same.
 
 ## Environment Variables
 
@@ -19,7 +19,6 @@ As in swiftwave, we need some extra permission control and a minimal authenticat
 | Variable Name      | Description              | Default Value        |
 | ------------------ | ------------------------ | -------------------- |
 | DOCKER_SOCKET_PATH | Path to docker socket    | /var/run/docker.sock |
-| AUTH_TOKEN         | Connect auth token       | N/A (mandatory)      |
 | LOG_LEVEL          | Log level                | notice               |
 | PING_READ          | Allow ping read          | 0                    |
 | PING_WRITE         | Allow ping write         | 0                    |
@@ -73,11 +72,11 @@ As in swiftwave, we need some extra permission control and a minimal authenticat
 
 1. Run this docker proxy.
    ```bash
-   docker run -it -p 2375:2375 -v /var/run/docker.sock:/var/run/docker.sock -e AUTH_TOKEN=<your_auth_token> -e PING_READ=1 -e VERSION_READ=1 ghcr.io/swiftwave-org/docker-socket-proxy
+   docker run -it -p 2375:2375 -v /var/run/docker.sock:/var/run/docker.sock -e PING_READ=1 -e VERSION_READ=1 ghcr.io/swiftwave-org/docker-socket-proxy
    ```
 2. Wherever you need to use this docker proxy, set `DOCKER_HOST` environment variable.
    ```bash
-   export DOCKER_HOST=<docker_container_or_service_name>/<your_auth_token>
+   export DOCKER_HOST=<docker_container_or_service_name>
    ```
 3. That's it.
 
